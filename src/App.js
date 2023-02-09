@@ -1,18 +1,13 @@
-import { Routes, Route } from "react-router-dom";
-import Login from "./components/Login";
-import Dashboard from "./pages/Dashboard";
+import AuthUser from "./components/AuthUser";
+import NavbarDashboard from "./navbar/NavbarDashboard";
+import NavbarHome from "./navbar/NavbarHome";
 
 function App() {
-  return (
-    <div >
-
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-
-    </div>
-  );
+  const { getToken } = AuthUser();
+  if (!getToken()) {
+    return <NavbarHome />;
+  }
+  return <NavbarDashboard />;
 }
 
 export default App;

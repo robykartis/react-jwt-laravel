@@ -1,11 +1,11 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import NavbarDashboard from "../navbar/NavbarDashboard";
 
-function Layouts({ children }) {
+function LayoutsDashboard({ children }) {
   return (
     <React.Fragment>
       <div className="bg-light">
-        <Navbar />
+        <NavbarDashboard />
         <main className="p-5 mt-5">
           <div>{children}</div>
         </main>
@@ -14,4 +14,4 @@ function Layouts({ children }) {
   );
 }
 
-export default Layouts;
+export default LayoutsDashboard;

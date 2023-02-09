@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthUser from "./AuthUser";
 
-function Login() {
+function Register() {
+  const navigate = useNavigate();
   const { http, setToken } = AuthUser();
+  const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const submitForm = () => {
     // api call
-    http.post("/login", { email: email, password: password }).then((res) => {
-      setToken(res.data.user, res.data.access_token);
-    });
+    http
+      .post("/register", { email: email, password: password, name: name })
+      .then((res) => {
+        navigate("/login");
+      });
   };
   return (
     <div>
@@ -26,6 +31,15 @@ function Login() {
                       <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
                     </div>
                     <form className="user">
+                      <div className="form-group">
+                        <input
+                          onChange={(e) => setName(e.target.value)}
+                          type="text"
+                          className="form-control form-control-user mb-4"
+                          aria-describedby="emailHelp"
+                          placeholder="EnterName..."
+                        />
+                      </div>
                       <div className="form-group">
                         <input
                           onChange={(e) => setEmail(e.target.value)}
@@ -50,7 +64,7 @@ function Login() {
                         onClick={submitForm}
                         className="btn btn-primary mt-4"
                       >
-                        Login
+                        Register
                       </button>
                     </form>
                   </div>
@@ -64,4 +78,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

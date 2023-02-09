@@ -1,11 +1,12 @@
 import React from "react";
-import Layouts from "./Layouts";
+import DashboardComponent from "../components/Dashboard";
+import LayoutsDashboard from "./LayoutsDashboard";
 
 function Dashboard() {
   return (
-    <Layouts>
-      <h1>Dashboard</h1>
-    </Layouts>
+    <LayoutsDashboard>
+      <DashboardComponent />
+    </LayoutsDashboard>
   );
 }
 
